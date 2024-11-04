@@ -1,4 +1,4 @@
-def clustring_indicators (pred, data=None, labels=None, model_name='cluster', verbose=1):
+def indicators (pred, data=None, labels=None, model_name='cluster', verbose=1):
     '''
     计算聚类指标
     :param pred: 聚类结果
