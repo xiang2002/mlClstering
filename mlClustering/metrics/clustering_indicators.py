@@ -1,3 +1,8 @@
+from sklearn.metrics.cluster import normalized_mutual_info_score as NMI, \
+        adjusted_mutual_info_score as AMI, adjusted_rand_score as AR, silhouette_score as SI, calinski_harabasz_score as CH
+
+from scipy.optimize import linear_sum_assignment as linear_assignment
+import numpy as np
 def indicators (pred, data=None, labels=None, model_name='cluster', verbose=1):
     '''
     计算聚类指标
@@ -33,11 +38,12 @@ def indicators (pred, data=None, labels=None, model_name='cluster', verbose=1):
 def cluster_acc(Y_pred, Y):
     '''
     Calculate clustering accuracy. Require scikit-learn installed
+    # 参考论文《Unsupervised deep embedding for clustering analysis》
     # Arguments
         Y_pred: Numpy array. Predicted labels
         Y: Numpy array. True labels
     # Return
-        accuracy: ACC value
+        accuracy: ACC value,w: 2D array. The confusion matrix
     '''
     assert Y_pred.size == Y.size
     D = max(Y_pred.max(), Y.max()) + 1
