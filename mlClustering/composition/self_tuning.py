@@ -1,4 +1,6 @@
 import torch
+
+
 def self_tuning(X: torch.Tensor, k: int = 10, t_factor: float = 0.5) -> torch.Tensor:
     """
     # 基于self-tuning方法构建图的权重矩阵。
