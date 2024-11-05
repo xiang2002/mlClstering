@@ -1,4 +1,8 @@
 torch
 numpy
 scikit-learn
+<<<<<<< HEAD
 scipy
+=======
+scipy
+>>>>>>> d3707703dc00ace71b0c94bce05dc68e4bf4b865
