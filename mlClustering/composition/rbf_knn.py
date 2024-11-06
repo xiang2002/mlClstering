@@ -41,7 +41,7 @@ def knn_numpy(data, n_neighbors=10, sigma=None):
         index_ = np.argsort(dist[i])[1 : 1 + n_neighbors]
         W[i, index_] = rbf_dist[i, index_]
         W[index_, i] = rbf_dist[index_, i]
-
+    W = (W + W.T) / 2
     return W
 
 
@@ -96,5 +96,5 @@ def knn_torch(data, n_neighbors=10, sigma=None):
         ]  # 最小的距离是0（自己跟自己）所以从1开始索引
         S[i, index_] = rbf_dist[i, index_]
         S[index_, i] = rbf_dist[index_, i]
-
+    S = (S + S.T) / 2
     return S

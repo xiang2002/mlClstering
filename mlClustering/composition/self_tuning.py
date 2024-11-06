@@ -1,7 +1,5 @@
 import torch
-
-
-def self_tuning(X: torch.Tensor, k: int = 10, t_factor: float = 0.5) -> torch.Tensor:
+def self_tuning(X, k=10, t_factor=0.5):
     """
     # 基于self-tuning方法构建图的权重矩阵。
 
@@ -24,7 +22,7 @@ def self_tuning(X: torch.Tensor, k: int = 10, t_factor: float = 0.5) -> torch.Te
     ]  # 排除自己
 
     # 初始化权重矩阵
-    W = torch.zeros(n, n, device=X.device)
+    W = torch.zeros(n, n, device=X.device,dtype=X.dtype)
 
     # 自适应带宽计算及权重更新
     for i in range(n):
@@ -40,5 +38,5 @@ def self_tuning(X: torch.Tensor, k: int = 10, t_factor: float = 0.5) -> torch.Te
 
     # 确保权重矩阵对称
     W = (W + W.T) / 2
-
+#    print(X.dtype,W.dtype)
     return W
