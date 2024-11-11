@@ -89,7 +89,7 @@ def knn_torch(data, n_neighbors=10, sigma=None):
     n = dist.shape[0]
     rbf_dist = rbf(dist, sigma)
 
-    S = torch.zeros_like(dist,device=data.device)
+    S = torch.zeros_like(dist,device=data.device,dtype=data.dtype)
     for i in range(n):
         index_ = torch.argsort(dist[i])[
             1 : 1 + n_neighbors

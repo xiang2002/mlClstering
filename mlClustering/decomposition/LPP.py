@@ -20,7 +20,7 @@ def lpp(data,
         W = KNN(data, n_neighbors, sigma=sigma)
     elif graph =='self_tuning':
         W = self_tuning(data,k=n_neighbors)
-    D = torch.zeros_like(W,device=data.device)
+    D = torch.zeros_like(W,device=data.device,dtype=data.dtype)
 
     for i in range(N):
         D[i, i] = torch.sum(W[i])
